@@ -1,42 +1,32 @@
-"use client";
+import Feed from "@/components/Feed";
 
-import { useSearchParams } from "next/navigation";
-
-const Page = () => {
-	const params = useSearchParams();
-
-	const data = [
+const Page = async ({ searchParams }) => {
+	let response = await fetch(
+		`https://api.api-ninjas.com/v1/recipe?query=${searchParams.q}`,
 		{
-			name: "Placeholder name",
-			desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe nostrum praesentium officia necessitatibus quo autem delectus voluptate",
-		},
-		{
-			name: "Placeholder name",
-			desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe nostrum praesentium officia necessitatibus quo autem delectus voluptate",
-		},
-		{
-			name: "Placeholder name",
-			desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe nostrum praesentium officia necessitatibus quo autem delectus voluptate",
-		},
-	];
+			method: "GET",
+			headers: {
+				"X-Api-Key": process.env.API_KEY,
+			},
+		}
+	);
 
-	const query = params.get("q");
+	if (!response.ok) {
+		console.log("Something went wrong");
+	}
+
+	const data = await response.json();
+	var len;
+	if (data.length == 10) len = "10+";
+	else if (data.length == 0) len = "No";
+	else len = data.length;
+
 	return (
-		<main className="min-h-screen grid place-content-start gap-4 bg-amber-100 p-6 py-12 md:p-20 lg:px-40">
-			<h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-amber-900 mb-6">
-				X results for "{query}":
+		<main className="min-h-screen overflow-x-hidden grid place-content-start gap-4 bg-amber-100 p-6 py-12 md:p-20 lg:px-40">
+			<h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-amber-900 mb-6 font-heading">
+				{len} results for "{searchParams.q}"{len != "No" && ":"}
 			</h1>
-
-			{data.map((el) => {
-				return (
-					<button className="block text-left max-w-prose bg-yellow-100 px-4 py-4 rounded-2xl transition-shadow shadow-md hover:shadow-xl">
-						<h2 className="text-xl text-amber-800 font-semibold">{el.name}</h2>
-						<p className="text-stone-500 pt-1 whitespace-nowrap text-ellipsis overflow-hidden">
-							{el.desc}
-						</p>
-					</button>
-				);
-			})}
+			<Feed data={data} />
 		</main>
 	);
 };
