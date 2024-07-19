@@ -39,7 +39,7 @@ const Form = () => {
 				placeholder="Pasta Carbonara..."
 			/>
 			<button
-				className={`absolute right-1.5 top-1.5 bg-amber-300 text-gray-900 font-bold uppercase rounded-xl px-3 md:px-6 py-2 md:py-3 transition-transform duration-300 active:scale-90 ${
+				className={`absolute right-1.5 top-1.5 bg-amber-300 text-gray-900 font-bold uppercase rounded-xl px-3 md:px-6 py-3 transition-transform duration-300 active:scale-90 ${
 					active && "translate-y-4"
 				}`}
 				type="submit"
