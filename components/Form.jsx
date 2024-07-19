@@ -33,7 +33,7 @@ const Form = () => {
 				ref={text}
 				type="text"
 				required
-				className={`w-full text-lg lg:text-xl px-4 py-3 md:py-4 md:px-6 lg:px-8 rounded-2xl bg-amber-50 shadow-md hover:shadow-lg focus:shadow-lg text-stone-800 placeholder:text-stone-400 transition-all duration-300 ${
+				className={`w-full text-lg lg:text-xl px-4 py-4 md:px-6 lg:px-8 rounded-2xl bg-amber-50 shadow-md hover:shadow-lg focus:shadow-lg text-stone-800 placeholder:text-stone-400 transition-all duration-300 ${
 					active && "translate-y-4"
 				}`}
 				placeholder="Pasta Carbonara..."
