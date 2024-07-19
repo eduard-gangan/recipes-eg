@@ -1,8 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const Feed = (props) => {
+	const section = useRef();
 	const [expanded, setexpanded] = useState(false);
 	const [carddata, setcarddata] = useState({
 		title: "",
@@ -11,8 +14,26 @@ const Feed = (props) => {
 		instructions: "",
 	});
 
+	useGSAP(
+		() => {
+			gsap.from(".food", {
+				opacity: 0,
+				y: 20,
+				duration: 0.5,
+				ease: "power4.inOut",
+				stagger: 0.2,
+			});
+		},
+		{ scope: section }
+	);
+
 	return (
-		<div className="w-screen grid gap-4 justify-items-start place-content-start">
+		<div
+			ref={section}
+			className="w-screen grid gap-4 justify-items-start place-content-start relative"
+		>
+			<div className="fixed z-0 top-0 right-8 h-screen bg-[url('/assets/jupiter.svg')] w-20 opacity-10 lg:opacity-30"></div>
+			<div className="fixed z-0 top-0 right-36 max-lg:hidden h-screen bg-[url('/assets/jupiter.svg')] w-20 opacity-30"></div>
 			{props.data.map((el, i) => {
 				return (
 					<button
@@ -26,12 +47,12 @@ const Feed = (props) => {
 								instructions: el.instructions,
 							});
 						}}
-						className=" text-left w-[calc(100vw-48px)] max-w-prose bg-yellow-100 px-4 py-4 rounded-2xl transition-shadow shadow-md hover:shadow-xl"
+						className="food text-left w-[calc(100vw-48px)] max-w-156 bg-yellow-100 px-4 py-4 md:px-6 md:py-5 rounded-2xl transition-shadow shadow-md hover:shadow-xl z-10"
 					>
-						<h2 className="text-xl text-amber-900 font-semibold font-heading">
+						<h2 className="text-xl md:text-2xl text-amber-900 font-semibold font-heading">
 							{el.title}
 						</h2>
-						<p className="text-stone-500 pt-1 whitespace-nowrap text-ellipsis overflow-hidden">
+						<p className="text-stone-500 md:text-lg pt-1 md:pt-2 whitespace-nowrap text-ellipsis overflow-hidden">
 							{el.instructions}
 						</p>
 					</button>
@@ -39,7 +60,7 @@ const Feed = (props) => {
 			})}
 			<div
 				onClick={() => setexpanded(false)}
-				className={`fixed top-0 left-0 h-screen-dynamic w-screen bg-stone-900/50 transition-opacity duration-300 ${
+				className={`fixed top-0 left-0 h-screen-dynamic w-screen bg-stone-900/50 transition-opacity duration-300 z-20 ${
 					expanded
 						? "opacity-100 pointer-events-auto"
 						: "opacity-0 pointer-events-none"

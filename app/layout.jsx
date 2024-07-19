@@ -9,19 +9,22 @@ const heading = Merienda({
 });
 
 export const metadata = {
-	title: "Recipe Look-up",
+	title: "Grandma's Cookbook",
 	metadataBase: "https://recipes-eg.netlify.app",
-	description: "Lorem Ipsum Dolor Sit Amet",
+	description:
+		"Search grandma's cookbook for ingredients, serving sizes and step-by-step instructions for 200.000+ meals",
 	openGraph: {
-		title: "Recipe Look-up",
-		description: "Lorem Ipsum Dolor Sit Amet",
-		images: "/assets/pot.webp",
+		title: "Grandma's Cookbook",
+		description:
+			"Search grandma's cookbook for ingredients, serving sizes and step-by-step instructions for 200.000+ meals",
+		images: "/assets/cookbook.webp",
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "Recipe Look-up",
-		description: "Lorem Ipsum Dolor Sit Amet",
-		image: "/assets/pot.webp",
+		title: "Grandma's Cookbook",
+		description:
+			"Search grandma's cookbook for ingredients, serving sizes and step-by-step instructions for 200.000+ meals",
+		image: "/assets/cookbook.webp",
 	},
 	// icons: {
 	//   shortcut: { url: "/favicon.ico", type: "image/x-icon" },
@@ -40,7 +43,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
-			<body className={[`${inter.className} ${heading.variable}`]}>
+			<body className={[`bg-amber-100 ${inter.className} ${heading.variable}`]}>
 				{children}
 			</body>
 		</html>
