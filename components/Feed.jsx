@@ -30,7 +30,7 @@ const Feed = (props) => {
 	return (
 		<div
 			ref={section}
-			className="w-screen grid gap-4 justify-items-start place-content-start relative"
+			className="w-screen grid gap-4 justify-items-start place-content-start relative mt-6"
 		>
 			<div className="fixed z-0 top-0 right-8 h-screen bg-[url('/assets/jupiter.svg')] w-20 opacity-10 lg:opacity-30"></div>
 			<div className="fixed z-0 top-0 right-36 max-lg:hidden h-screen bg-[url('/assets/jupiter.svg')] w-20 opacity-30"></div>

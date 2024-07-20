@@ -26,18 +26,16 @@ export const metadata = {
 			"Search grandma's cookbook for ingredients, serving sizes and step-by-step instructions for 200.000+ meals",
 		image: "/assets/cookbook.webp",
 	},
-	// icons: {
-	//   shortcut: { url: "/favicon.ico", type: "image/x-icon" },
-	//   icon: [
-	//     { url: "/favicon.ico", type: "image/x-icon" },
-	//     { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
-	//     { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
-	//   ],
-	//   apple: [
-	//     { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
-	//   ],
-	//   manifest: "/site.webmanifest"
-	// },
+	icons: {
+		shortcut: { url: "/favicon.ico", type: "image/x-icon" },
+		icon: [
+			{ url: "/favicon.ico", type: "image/x-icon" },
+			{ url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+			{ url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+		],
+		apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+		manifest: "/site.webmanifest",
+	},
 };
 
 export default function RootLayout({ children }) {

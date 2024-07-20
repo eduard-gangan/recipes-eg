@@ -1,3 +1,4 @@
+import Empty from "@/components/Empty";
 import Feed from "@/components/Feed";
 
 const Page = async ({ searchParams }) => {
@@ -22,11 +23,11 @@ const Page = async ({ searchParams }) => {
 	else len = data.length;
 
 	return (
-		<main className="min-h-screen overflow-x-hidden grid place-content-start gap-4 bg-amber-100 p-6 py-12 md:p-20 lg:px-40">
-			<h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-amber-900 mb-6 font-heading flex items-baseline">
+		<main className="min-h-screen overflow-x-hidden grid place-content-start gap-4 bg-amber-100 p-6 py-12 md:p-20 lg:px-40 w-full">
+			<h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-amber-900 font-heading flex items-baseline">
 				{len} results for "{searchParams.q}"{len != "No" && ":"}
 			</h1>
-			<Feed data={data} />
+			{data.length == 0 ? <Empty /> : <Feed data={data} />}
 		</main>
 	);
 };
